@@ -24,9 +24,11 @@ Admin
                     <td>{{ $post->body }}</td>
                     <td>{{ $post->slug }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('admin.posts.show', ['post' => $post->slug])}}"><i class="fas fa-eye fa-xs fa-fw"></i> View</a>
-                        <a class="btn btn-warning" href="#"><i class="fas fa-pen fa-xs fa-fw"></i> Edit</a>
-                        <a class="btn btn-danger" href="#"><i class="fa fa-trash fa-xs fa-fw" aria-hidden="true"></i> Delete</a>
+                        <a class="btn btn-primary mb-2" href="{{ route('admin.posts.show', ['post' => $post->slug]) }}"><i class="fas fa-eye fa-xs fa-fw"></i> View</a>
+                        <a class="btn btn-warning mb-2" href="{{ route('admin.posts.edit', ['post' => $post->slug]) }}"><i class="fas fa-pen fa-xs fa-fw"></i> Edit</a>
+                        <form action="">
+                            <a class="btn btn-danger mb-2" href="#"><i class="fa fa-trash fa-xs fa-fw" aria-hidden="true"></i> Delete</a>
+                        </form>
 
                     </td>
                 </tr>
