@@ -9,6 +9,7 @@
         <div class="card-body">
             <h4 class="card-title"><a href="{{route('admin.posts.show', ['post' => $post->slug])}}">{{ $post->title }}</a></h4>
             <p class="card-text">{{ $post->body }}</p>
+            <p class="card-text">{{ $post->created_at }}</p>
         </div>
     </div>    
     @endforeach

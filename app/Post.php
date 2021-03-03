@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $fillable = ['title', 'body', 'slug'];
     //Per sostituire lo slug all'id
     public function getRouteKeyName()
     {

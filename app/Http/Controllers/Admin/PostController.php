@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->orderBy('id', 'desc')->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post;
+        $post->title = request('title');
+        $post->body = request('body');
+        $post->slug = request('slug');
+        $post->save();
+
+        $post = Post::orderBy('id', 'desc')->first();
+        return redirect()->route('admin.posts.index');
+
     }
 
     /**
@@ -72,7 +80,9 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+        $post->update($data);
+        return redirect()->route('admin.posts.show', ['post' => $post->slug]);
     }
 
     /**
@@ -83,6 +93,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
 }

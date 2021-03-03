@@ -2,8 +2,9 @@
 
 @section('content')
 
-    <form action="" method="post">
+    <form class="mb-5" action="{{ route('admin.posts.update', ['post' => $post->slug]) }}" method="post">
     @csrf
+    @method('PUT')
     {{-- Title --}}
     <div class="form-row">
         <div class="col-lg-12 mb-3">
@@ -12,7 +13,7 @@
         </div>
     </div>
     {{-- Body --}}
-    <div class="form-rwo">
+    <div class="form-row">
         <div class="col-lg-12 mb-3">
             <label for="validation-body">Edit body</label>
             <textarea class="form-control" aria-label="With textarea" id="validation-body" name="body" required>{{ $post->body }}</textarea>
@@ -27,5 +28,6 @@
     </div>
         <button class="btn btn-primary" type="submit">Update post</button>
     </form>
+    <a class="btn btn-primary mb-2" href="{{ route('admin.posts.index') }}">Back to index</a>
 
 @endsection

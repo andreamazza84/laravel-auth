@@ -6,6 +6,8 @@ Admin
 
 @section('content')
     <h1>All posts</h1>
+    <a class="btn btn-primary my-2" href="{{ route('admin.posts.create') }}"><i class="fas fa-plus-circle fa-xs"></i> Create a new post</a>
+
     <table class="table">
         <thead>
             <tr>
@@ -26,8 +28,10 @@ Admin
                     <td>
                         <a class="btn btn-primary mb-2" href="{{ route('admin.posts.show', ['post' => $post->slug]) }}"><i class="fas fa-eye fa-xs fa-fw"></i> View</a>
                         <a class="btn btn-warning mb-2" href="{{ route('admin.posts.edit', ['post' => $post->slug]) }}"><i class="fas fa-pen fa-xs fa-fw"></i> Edit</a>
-                        <form action="">
-                            <a class="btn btn-danger mb-2" href="#"><i class="fa fa-trash fa-xs fa-fw" aria-hidden="true"></i> Delete</a>
+                        <form action="{{ route('admin.posts.destroy', ['post' => $post->slug])}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger mb-2" type="submit"><i class="fa fa-trash fa-xs fa-fw" aria-hidden="true"></i> Delete</button>
                         </form>
 
                     </td>
