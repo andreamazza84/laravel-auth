@@ -32,6 +32,7 @@ Route::get('/contacts', 'PageController@contacts')->name('contacts');
 Route::get('/blog', 'PostController@index')->name('blog');
 Route::get('/blog/{post}', 'PostController@show');
 
+Route::get('/categories', 'CategoryController@index')->name('categories');
 
 
 Auth::routes(['register' => false]);//così nessuno può più registrarsi all'applicazione
@@ -41,4 +42,5 @@ Auth::routes(['register' => false]);//così nessuno può più registrarsi all'ap
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('/', 'HomeController@index')->name('index');
     Route::resource('posts', 'PostController'); 
+    Route::resource('categories', 'CategoryController');
 });

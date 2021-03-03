@@ -92,7 +92,7 @@
                     <ul class="py-4 list-unstyled">
                         <li><a href="{{ route('admin.index') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                         <li><a href="{{ route('admin.posts.index') }}"><i class="fas fa-book-open"></i> Posts</a></li>
-                        <li><a href="#"><i class="fas fa-folder-open"></i> Categories</a></li>
+                        <li><a href="{{ route('admin.categories.index')}}"><i class="fas fa-folder-open"></i> Categories</a></li>
                         <li><a href="#"><i class="fas fa-tags"></i> Tags</a></li>
                     </ul>
                 </div>
